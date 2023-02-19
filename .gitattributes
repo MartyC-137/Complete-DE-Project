@@ -1,0 +1,6 @@
+*.sql linguist-detectable=true
+*.hcl linguist-detectable=true
+*.tf linguist-language=HCL
+*.yml linguist-detectable=true
+*.yml linguist-language=YAML
+*.ipynb linguist-detectable=false
