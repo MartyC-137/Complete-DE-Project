@@ -1,8 +1,6 @@
 # See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.177.0/containers/go/.devcontainer/base.Dockerfile
 
 # [Choice] Go version (use -bullseye variants on local arm64/Apple Silicon): 1, 1.16, 1.17, 1-bullseye, 1.16-bullseye, 1.17-bullseye, 1-buster, 1.16-buster, 1.17-buster
-# ARG USERNAME=vscude
-
 ARG VARIANT=1-bullseye
 FROM mcr.microsoft.com/vscode/devcontainers/go:0-${VARIANT}
 
@@ -88,16 +86,3 @@ RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
 
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
-
-
-# Python
-FROM --platform=linux/amd64 prefecthq/prefect:2.7.7-python3.9
-
-# COPY requirements.txt .
-
-# RUN pip install -r requirements.txt --trusted-host pypi.python.org --no-cache-dir
-
-# USER $USERNAME
-
-# COPY flows /opt/prefect/flows
-# RUN mkdir -p /opt/prefect/data/yellow
