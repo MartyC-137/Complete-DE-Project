@@ -2,27 +2,14 @@
 ### A complete description of a Prefect Deployment for flow 'etl-parent-flow'
 ###
 name: Parameterized ETL
-description: Zoomcamp deployment for NYC yellow taxi data
-version: 318ea0b34267f0755101454e90dec660
+description: null
+version: db2a78b592c2c922b7a56689f197188e
 # The work queue that will handle this deployment's runs
 work_queue_name: default
 tags: []
-parameters:
-  months:
-  - 1
-  - 2
-  - 3
-  color: 
-  - yellow
-  - green
+parameters: {}
 schedule: null
 infra_overrides: {}
-
-###
-### DO NOT EDIT BELOW THIS LINE
-###
-flow_name: etl-parent-flow
-manifest_path: null
 infrastructure:
   type: process
   env: {}
@@ -31,14 +18,17 @@ infrastructure:
   command: null
   stream_output: true
   working_dir: null
-  _block_document_id: 034e8448-a22f-4cb2-a10e-badee4994967
-  _block_document_name: anonymous-270a755d-ea53-4066-868c-bc8f9289f44c
-  _is_anonymous: true
   block_type_slug: process
   _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: etl-parent-flow
+manifest_path: null
 storage: null
 path: /workspaces/dbt-core_GitHubActions-pipeline
-entrypoint: flows/gcp/parameterized_flow.py:etl_parent_flow
+entrypoint: prefect/parameterized_flow.py:etl_parent_flow
 parameter_openapi_schema:
   title: Parameters
   type: object
@@ -48,6 +38,7 @@ parameter_openapi_schema:
       default:
       - 1
       - 2
+      - 3
       position: 0
       type: array
       items:
@@ -59,8 +50,12 @@ parameter_openapi_schema:
       type: integer
     color:
       title: color
-      default: yellow
+      default:
+      - yellow
+      - green
       position: 2
-      type: string
+      type: array
+      items:
+        type: string
   required: null
   definitions: null

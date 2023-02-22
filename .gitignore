@@ -3,7 +3,7 @@
 .env
 *.parquet
 .DS_Store
-/data/
+# /data/
 __pycache__
 .pyc
 blocks/

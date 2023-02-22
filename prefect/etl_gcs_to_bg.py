@@ -13,16 +13,13 @@ def extract_from_gcs(color: str, year: int, month: int) -> Path:
     return Path(f"/workspaces/dbt-core_GitHubActions-pipeline/data/{gcs_path}")
 
 @task()
-def transform(path: Path) -> pd.DataFrame:
-    """Data cleaning example"""
+def read(path: Path) -> pd.DataFrame:
+    """read the data into pandas"""
     df = pd.read_parquet(path)
-    print(f"pre: missing passenger count: {df['passenger_count'].isna().sum()}")
-    df["passenger_count"].fillna(0, inplace=True)
-    print(f"post: missing passenger count: {df['passenger_count'].isna().sum()}")
     return df
 
 @task()
-def write_bq(df: pd.DataFrame) -> None:
+def write_bq(df: pd.DataFrame) -> int:
     """Write DataFrame to BiqQuery"""
 
     gcp_credentials_block = GcpCredentials.load('gcp-creds')
@@ -34,17 +31,29 @@ def write_bq(df: pd.DataFrame) -> None:
         chunksize = 500_000,
         if_exists = 'append',
     )
+    return len(df)
 
 @flow()
-def etl_gcs_to_bq():
+def el_gcs_to_bq(year: int, month: int, color: str) -> None:
     """Main ETL flow to load data into Big Query"""
-    color = "yellow"
-    year = 2021
-    month = 1
 
     path = extract_from_gcs(color, year, month)
-    df = transform(path)
-    write_bq(df)
+    df = read(path)
+    row_count = write_bq(df)
+    return row_count
+
+@flow(log_prints=True)
+def el_parent_gcs_to_bq(
+    months: list[int] = [1, 2], year: int = 2021, color: str = "yellow"
+):
+    """Main EL flow to load data into Big Query"""
+    total_rows = 0
+
+    for month in months:
+        rows = el_gcs_to_bq(year, month, color)
+        total_rows += rows
+
+    print(total_rows)
 
 if __name__ == "__main__":
-    etl_gcs_to_bq()
+    el_parent_gcs_to_bq(months=[2, 3], year=2019, color="yellow")
