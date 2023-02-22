@@ -11,3 +11,4 @@ ipykernel
 polars
 dbt-core
 dbt-bigquery
+dbt-postgres
