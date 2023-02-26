@@ -78,7 +78,9 @@
 			"terminal.integrated.defaultProfile.osx": "pwsh",
 			"tasks.statusbar.default.hide": true,
 			"terminal.integrated.tabs.defaultIcon": "terminal-powershell",
-			"terminal.integrated.tabs.defaultColor": "terminal.ansiBlue"
+			"terminal.integrated.tabs.defaultColor": "terminal.ansiBlue",
+			"workbench.colorTheme": "GitHub Dark Dimmed",
+			"workbench.iconTheme": "material-icon-theme"
 			},
 
 			// Add the IDs of extensions you want installed when the container is created.
@@ -99,7 +101,9 @@
 				"akamud.vscode-theme-onedark",
 				"ms-vscode-remote.remote-containers",
 				"PKief.material-icon-theme",
-				"GitHub.github-vscode-theme"
+				"GitHub.github-vscode-theme",
+				"bastienboutonnet.vscode-dbt",
+				"innoverio.vscode-dbt-power-user"
 			]
 		}
 	},
