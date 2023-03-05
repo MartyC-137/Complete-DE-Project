@@ -42,8 +42,9 @@
 			"jdkVersion": "11"
 		},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
-			"version": "latest"
-		}
+			"version": "419.0.0"
+		},
+		"ghcr.io/devcontainers/features/powershell:1": {}
 	  },
   
 	// Set *default* container specific settings.json values on container create.
@@ -103,7 +104,11 @@
 				"PKief.material-icon-theme",
 				"GitHub.github-vscode-theme",
 				"bastienboutonnet.vscode-dbt",
-				"innoverio.vscode-dbt-power-user"
+				"innoverio.vscode-dbt-power-user",
+				"snowflake.snowflake-vsc",
+				"mhutchie.git-graph",
+				"redhat.vscode-xml",
+				"4ops.terraform"
 			]
 		}
 	},

@@ -7,4 +7,6 @@ docker_block = DockerContainer(
     auto_remove = True,
 )
 
-docker_block.save("zoom-docker", overwrite=True)
+docker_block.save("zoom-docker", overwrite = True)
+
+print('Docker block successfully configured!', '\n')
