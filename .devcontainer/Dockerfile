@@ -81,6 +81,11 @@ RUN echo "eval \"\$(oh-my-posh init zsh --config $POSH_THEME)\"" >> /home/${USER
 ARG TZ="UTC"
 RUN ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime
 
+# Required for Python - Confluent Kafka on M1 Silicon
+RUN apt update && apt -y install software-properties-common gcc
+RUN git clone https://github.com/edenhill/librdkafka
+RUN cd librdkafka && ./configure && make && make install && ldconfig
+
 # [Optional] Uncomment the next line to use go get to install anything else you need
 # RUN go get -x github.com/JanDeDobbeleer/battery
 
