@@ -6,5 +6,6 @@
 # /data/
 __pycache__
 .pyc
-blocks/
+# blocks/
 *.csv
+*gcp_block.py

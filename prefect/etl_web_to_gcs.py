@@ -18,7 +18,7 @@ def clean(df: pd.DataFrame, color: str) -> pd.DataFrame:
     if color == "yellow":
         df["tpep_pickup_datetime"] = pd.to_datetime(df["tpep_pickup_datetime"])
         df["tpep_dropoff_datetime"] = pd.to_datetime(df["tpep_dropoff_datetime"])
-    if color == "fhv":
+    elif color == "fhv":
         df["pickup_datetime"] = pd.to_datetime(df["pickup_datetime"])
         df["dropOff_datetime"] = pd.to_datetime(df["dropOff_datetime"])
     else:
@@ -46,9 +46,9 @@ def write_gcs(path: Path) -> None:
 @flow()
 def etl_web_to_gcs() -> None:
     """The main EL function"""
-    color = 'fhv'
+    color = 'yellow'
     year = 2020
-    month = 11
+    month = 1
     dataset_file = f"{color}_tripdata_{year}-{month:02}"
     dataset_url = f"https://github.com/DataTalksClub/nyc-tlc-data/releases/download/{color}/{dataset_file}.csv.gz"
 
@@ -58,7 +58,7 @@ def etl_web_to_gcs() -> None:
     write_gcs(path)
 
 if __name__ == '__main__':
-    color = "fhv"
-    months = [11]
+    color = "yellow"
+    months = [1]
     year = 2020
     etl_web_to_gcs()

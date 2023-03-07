@@ -38,9 +38,13 @@
 		"ghcr.io/devcontainers/features/docker-in-docker:2": {},
 		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {},
 		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers-contrib/features/spark-sdkman:2": {
+			"jdkVersion": "11"
+		},
 		"ghcr.io/dhoeric/features/google-cloud-cli:1": {
-			"version": "latest"
-		}
+			"version": "419.0.0"
+		},
+		"ghcr.io/devcontainers/features/powershell:1": {}
 	  },
   
 	// Set *default* container specific settings.json values on container create.
@@ -75,7 +79,9 @@
 			"terminal.integrated.defaultProfile.osx": "pwsh",
 			"tasks.statusbar.default.hide": true,
 			"terminal.integrated.tabs.defaultIcon": "terminal-powershell",
-			"terminal.integrated.tabs.defaultColor": "terminal.ansiBlue"
+			"terminal.integrated.tabs.defaultColor": "terminal.ansiBlue",
+			"workbench.colorTheme": "GitHub Dark Dimmed",
+			"workbench.iconTheme": "material-icon-theme"
 			},
 
 			// Add the IDs of extensions you want installed when the container is created.
@@ -96,7 +102,13 @@
 				"akamud.vscode-theme-onedark",
 				"ms-vscode-remote.remote-containers",
 				"PKief.material-icon-theme",
-				"GitHub.github-vscode-theme"
+				"GitHub.github-vscode-theme",
+				"bastienboutonnet.vscode-dbt",
+				"innoverio.vscode-dbt-power-user",
+				"snowflake.snowflake-vsc",
+				"mhutchie.git-graph",
+				"redhat.vscode-xml",
+				"4ops.terraform"
 			]
 		}
 	},
@@ -105,7 +117,7 @@
 	// "forwardPorts": [3000],
   
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install --user -r .devcontainer/requirements.txt --use-pep517",
+	"postCreateCommand": "pip3 install --user -r .devcontainer/requirements.txt --use-pep517 --no-cache-dir",
   
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
