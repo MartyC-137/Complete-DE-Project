@@ -1,4 +1,4 @@
-# Data Engineering Zoomcamp
+# Data Engineering Zoomcamp 2023 Cohort
 
 This repository contains my solutions for the exercises and projects in the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) by [DataTalksClub](https://github.com/DataTalksClub)
 
@@ -7,11 +7,14 @@ This repository contains my solutions for the exercises and projects in the [Dat
 The course covers the following topics and contains code and examples for these:
 
 - Google Cloud (Cloud Storage and BigQuery)
-- Terraform
+- `Terraform`
 - Shell scripting
-- Python (Specifically, Prefect, a Python-based ETL/ELT tool)
-- SQL
-- dbt
+- `Docker` and containerization
+- `Python` (Specifically, `Prefect`, a Python-based ETL/ELT tool)
+- `SQL`
+- `dbt`
+
+In the course, you create cloud infrastructure using Terraform, cover the principles of Docker and containerization, create Python based ETL pipelines using Prefect, interact with the data using Google Cloud Storage and Google BigQuery, create models in dbt, and create reports from the data.
 
 ## Prerequisites
 
