@@ -11,7 +11,7 @@
 		"VARIANT": "1.19-bullseye",
 		// Options:
   
-		"POSH_THEME": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/clean-detailed.omp.json",
+		"POSH_THEME": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/wholespace.omp.json",
   
 		// Override me with your own timezone:
 		"TZ": "America/Moncton",

@@ -29,6 +29,7 @@ def clean(df: pd.DataFrame, color: str) -> pd.DataFrame:
     else:
         df["lpep_pickup_datetime"] = pd.to_datetime(df["lpep_pickup_datetime"])
         df["lpep_dropoff_datetime"] = pd.to_datetime(df["lpep_dropoff_datetime"])
+    df = df.convert_dtypes()
     print(df.head(2))
     print(f'columns: {df.dtypes}')
     print(f'rows: {len(df)}')
@@ -67,7 +68,8 @@ def etl_web_to_gcs(year: int, month: int, color: str) -> None:
 
 @flow()
 def etl_parent_flow(
-    months: list[int] = [1, 2, 3], year: int = 2019, color: str = "yellow"
+    months: list[int] = [3, 4], 
+    year: int = 2019, color: str = "yellow"
 ):
     for month in months:
         etl_web_to_gcs(year, month, color)
@@ -75,6 +77,6 @@ def etl_parent_flow(
 
 if __name__ == "__main__":
     color = "yellow"
-    months = [1, 2, 3]
+    months = [3, 4]
     year = 2019
     etl_parent_flow(months, year, color)

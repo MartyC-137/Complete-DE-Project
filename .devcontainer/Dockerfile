@@ -58,7 +58,7 @@ RUN pwsh -Command Install-Module posh-git -Scope AllUsers -Force; \
 ENV PATH "$PATH:/home/${USERNAME}/bin"
 
 # Can be used to override the devcontainer prompt default theme:
-ENV POSH_THEME="https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/clean-detailed.omp.json"
+ENV POSH_THEME="https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/wholespace.omp.json"
 
 # Deploy oh-my-posh prompt to Powershell:
 COPY Microsoft.PowerShell_profile.ps1 /home/${USERNAME}/.config/powershell/Microsoft.PowerShell_profile.ps1

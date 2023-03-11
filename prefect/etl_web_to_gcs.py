@@ -24,6 +24,7 @@ def clean(df: pd.DataFrame, color: str) -> pd.DataFrame:
     else:
         df["lpep_pickup_datetime"] = pd.to_datetime(df["lpep_pickup_datetime"])
         df["lpep_dropoff_datetime"] = pd.to_datetime(df["lpep_dropoff_datetime"])
+    df = df.convert_dtypes()
     print(df.head(2))
     print(f'columns: {df.dtypes}')
     print(f'rows: {len(df)}')
